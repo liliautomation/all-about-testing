@@ -1,70 +1,108 @@
-# Test Task Checklist Generator
+# All About Testing
 
-A simple full-stack app that generates QA task checklists from a task title using a rules-based engine.
+A React and Express reference app for software testing concepts, strategies, and practical QA guidance.
 
-## 🧰 Tech Stack
-- Frontend: React + Vite + TypeScript
-- Backend: Node.js + Express + TypeScript
+The frontend presents testing topics as navigable pages, while the backend serves structured testing content used by the dynamic pages.
 
-## 🛠 Setup Instructions
+## Tech Stack
 
-### 1. Clone the Repository
+- Frontend: React, Vite, TypeScript
+- Backend: Node.js, Express, TypeScript
+- Package manager: pnpm
+- E2E testing: Playwright
+
+## Features
+
+- Test Types reference page backed by `/api/checklist`
+- Test Strategies reference page backed by `/api/strategies`
+- Dev Testing Roadmap page
+- Automation Decision page
+- Test Data Management page
+- Playwright E2E tests using the Page Object Model pattern
+
+## Setup
+
+Install dependencies from the repository root:
+
 ```bash
-git clone https://github.com/your-username/qa-task-generator.git
-cd qa-task-generator
-```
-
-### 2. Install Dependencies
-
-#### Backend
-```bash
-cd backend
 pnpm install
 ```
 
-#### Frontend
+If Playwright browsers are not installed yet, run:
+
 ```bash
-cd ../frontend
-pnpm install
+pnpm exec playwright install
 ```
 
-### 3. Run the App
+## Run Locally
 
-#### Backend (localhost:3000)
+Start the frontend and backend together:
+
 ```bash
-pnpm run dev
+pnpm dev
 ```
 
-#### Frontend (localhost:5173)
+Or run them separately:
+
 ```bash
-pnpm run dev
+pnpm dev:backend
+pnpm dev:frontend
 ```
 
-> The frontend will make requests to `http://localhost:3000/api/checklist`.
+Local URLs:
 
-## 🧪 Example
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3000`
+- Checklist API: `http://localhost:3000/api/checklist`
+- Strategies API: `http://localhost:3000/api/strategies`
 
-**Input:**  
-`title: Reset password from forgot password screen`
+## Testing
 
-**Generated Checklist:**
-- Verify 'Forgot Password' UI is visible
-- Validate email input field and button behavior
-- Test successful reset flow (email sent)
-- Check error cases (invalid email, server error)
-- Ensure success message is shown
-- Test across major browsers and devices
+Run the Playwright E2E test suite:
 
-## 📁 Project Structure
-```
-qa-task-generator/
-├── backend/        # Express API
-└── frontend/       # React UI
+```bash
+pnpm test:e2e
 ```
 
-## 📌 Notes
-- Make sure ports 3000 and 5173 are free
-- CORS is enabled for local development
+Open the Playwright UI runner:
 
-## 🔒 License
-MIT
+```bash
+pnpm test:e2e:ui
+```
+
+The Playwright config starts the backend and frontend automatically when needed.
+
+## E2E Structure
+
+```text
+e2e/
+  helpers/
+    linkChecker.ts
+  pages/
+    SubPage.ts
+    HomePage.ts
+    TestTypesPage.ts
+    TestStrategiesPage.ts
+    RoadmapPage.ts
+    AutomationDecisionPage.ts
+    TestDataManagementPage.ts
+  tests/
+    link-checker.spec.ts
+  playwright.config.ts
+```
+
+Spec files should use page objects from `e2e/pages/` instead of raw Playwright locators.
+
+## Project Structure
+
+```text
+all-about-testing/
+  backend/      Express API
+  frontend/     React UI
+  e2e/          Playwright tests
+```
+
+## Notes
+
+- Ports `3000` and `5173` need to be available for local development.
+- CORS is enabled for local frontend-to-backend requests.
