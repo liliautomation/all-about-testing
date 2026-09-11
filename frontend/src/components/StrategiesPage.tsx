@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { getTestStrategies, type TestStrategy } from "../data/strategies";
 
 const emojiMap: Record<string, string> = {
   "Test-Driven Development (TDD)": "🔴",
@@ -15,24 +16,6 @@ const palette = [
   "#7e3af2", "#0e9f6e", "#1a56db", "#e3a008", "#e02424",
   "#9061f9", "#0694a2", "#ff5a1f",
 ];
-
-interface Tool {
-  name: string;
-  url: string;
-}
-
-interface StrategyPrinciple {
-  text: string;
-  url: string;
-  sample: string;
-}
-
-interface TestStrategy {
-  name: string;
-  description: string;
-  principles: StrategyPrinciple[];
-  tools: Tool[];
-}
 
 const cardStyle: React.CSSProperties = {
   borderRadius: "10px",
@@ -82,9 +65,10 @@ const sampleBlockStyle: React.CSSProperties = {
   fontFamily: "'Fira Code', 'Cascadia Code', Consolas, monospace",
 };
 
+// Static import — works on GitHub Pages (no backend required)
+const strategies: TestStrategy[] = getTestStrategies();
+
 export const StrategiesPage = () => {
-  const [strategies, setStrategies] = useState<TestStrategy[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [openSamples, setOpenSamples] = useState<Set<string>>(new Set());
 
   const toggleSample = (key: string) =>
@@ -93,21 +77,6 @@ export const StrategiesPage = () => {
       next.has(key) ? next.delete(key) : next.add(key);
       return next;
     });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/strategies")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch");
-        return res.json();
-      })
-      .then(setStrategies)
-      .catch(() =>
-        setError("Could not load strategies. Is the backend running?")
-      );
-  }, []);
-
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (strategies.length === 0) return <div className="spinner" />;
 
   return (
     <div>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { getTestingTopics, type TestingTopic } from "../data/checklist";
 
 const emojiMap: Record<string, string> = {
   "Unit Testing": "🧩",
@@ -18,24 +19,6 @@ const palette = [
   "#1a56db", "#7e3af2", "#0e9f6e", "#e3a008", "#e02424",
   "#3f83f8", "#9061f9", "#0694a2", "#ff5a1f", "#31c48d",
 ];
-
-interface Tool {
-  name: string;
-  url: string;
-}
-
-interface BestPractice {
-  text: string;
-  url: string;
-  sample: string;
-}
-
-interface TestingTopic {
-  name: string;
-  description: string;
-  bestPractices: BestPractice[];
-  tools: Tool[];
-}
 
 const cardStyle: React.CSSProperties = {
   borderRadius: "10px",
@@ -85,9 +68,10 @@ const sampleBlockStyle: React.CSSProperties = {
   fontFamily: "'Fira Code', 'Cascadia Code', Consolas, monospace",
 };
 
+// Static import — works on GitHub Pages (no backend required)
+const topics: TestingTopic[] = getTestingTopics();
+
 export const ChecklistForm = () => {
-  const [topics, setTopics] = useState<TestingTopic[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [openSamples, setOpenSamples] = useState<Set<string>>(new Set());
 
   const toggleSample = (key: string) =>
@@ -96,21 +80,6 @@ export const ChecklistForm = () => {
       next.has(key) ? next.delete(key) : next.add(key);
       return next;
     });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/checklist")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch");
-        return res.json();
-      })
-      .then(setTopics)
-      .catch(() =>
-        setError("Could not load testing topics. Is the backend running?")
-      );
-  }, []);
-
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (topics.length === 0) return <div className="spinner" />;
 
   return (
     <div>
