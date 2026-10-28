@@ -526,7 +526,7 @@ export const RoadmapPage: React.FC = () => {
                                         <pre
                                           style={{
                                             margin: 0,
-                                            fontFamily: "'Fira Code', 'Cascadia Code', 'Menlo', monospace",
+                                            fontFamily: "var(--font-code)",
                                             fontSize: "0.8rem",
                                             lineHeight: 1.65,
                                             color: "#cdd6f4",
@@ -655,7 +655,7 @@ export const RoadmapPage: React.FC = () => {
                                         <pre
                                           style={{
                                             margin: 0,
-                                            fontFamily: "'Fira Code', 'Cascadia Code', 'Menlo', monospace",
+                                            fontFamily: "var(--font-code)",
                                             fontSize: "0.8rem",
                                             lineHeight: 1.65,
                                             color: "#cdd6f4",

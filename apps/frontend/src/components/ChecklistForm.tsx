@@ -65,7 +65,7 @@ const sampleBlockStyle: React.CSSProperties = {
   lineHeight: 1.5,
   overflowX: "auto",
   whiteSpace: "pre",
-  fontFamily: "'Fira Code', 'Cascadia Code', Consolas, monospace",
+  fontFamily: "var(--font-code)",
 };
 
 // Static import — works on GitHub Pages (no backend required)
