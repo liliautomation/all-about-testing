@@ -1,4 +1,4 @@
-name: Deploy frontend and run E2E tests
+name: Deploy and Test
 
 on:
   push:
