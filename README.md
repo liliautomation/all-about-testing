@@ -89,7 +89,7 @@ failed and uploads diagnostics; the frontend has already been deployed.
 ## E2E Structure
 
 ```text
-e2e/
+tests/e2e/
   helpers/
     linkChecker.ts
   pages/
@@ -105,15 +105,17 @@ e2e/
   playwright.config.ts
 ```
 
-Spec files should use page objects from `e2e/pages/` instead of raw Playwright locators.
+Spec files should use page objects from `tests/e2e/pages/` instead of raw Playwright locators.
 
 ## Project Structure
 
 ```text
 all-about-testing/
-  backend/      Express API
-  frontend/     React UI
-  e2e/          Playwright tests
+  apps/
+    backend/    Express API
+    frontend/   React UI
+  tests/
+    e2e/        Playwright tests
 ```
 
 ## Notes

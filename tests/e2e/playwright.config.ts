@@ -28,14 +28,14 @@ export default defineConfig({
     : [
         {
           command: "pnpm dev:backend",
-          cwd: resolve(__dirname, ".."),
+          cwd: resolve(__dirname, "../.."),
           url: "http://localhost:3000/api/checklist",
           reuseExistingServer: true,
           timeout: 30_000,
         },
         {
-          command: "pnpm --dir frontend exec vite",
-          cwd: resolve(__dirname, ".."),
+          command: "pnpm --dir apps/frontend exec vite",
+          cwd: resolve(__dirname, "../.."),
           url: "http://localhost:5173",
           reuseExistingServer: true,
           timeout: 30_000,

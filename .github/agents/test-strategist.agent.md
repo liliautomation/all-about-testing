@@ -35,16 +35,16 @@ curated source before making recommendations:
 
 | Topic | Source |
 | --- | --- |
-| Test strategies and the test pyramid used by the UI | `frontend/src/data/strategies.ts` |
-| Test strategy API content | `backend/src/services/strategiesService.ts` |
-| Test types and best practices used by the UI | `frontend/src/data/checklist.ts` |
-| Test types API content | `backend/src/services/checklistService.ts` |
-| Automation decisions | `frontend/src/components/AutomationDecisionPage.tsx` |
-| Test data management | `frontend/src/components/TestDataManagementPage.tsx` |
-| Accessibility examples | `frontend/src/data/accessibilitySnippets.ts` |
-| Contract testing examples | `frontend/src/data/contractSnippets.ts` |
-| Performance testing examples | `frontend/src/data/k6Snippets.ts` |
-| Security testing examples | `frontend/src/data/securitySnippets.ts` |
+| Test strategies and the test pyramid used by the UI | `apps/frontend/src/data/strategies.ts` |
+| Test strategy API content | `apps/backend/src/services/strategiesService.ts` |
+| Test types and best practices used by the UI | `apps/frontend/src/data/checklist.ts` |
+| Test types API content | `apps/backend/src/services/checklistService.ts` |
+| Automation decisions | `apps/frontend/src/components/AutomationDecisionPage.tsx` |
+| Test data management | `apps/frontend/src/components/TestDataManagementPage.tsx` |
+| Accessibility examples | `apps/frontend/src/data/accessibilitySnippets.ts` |
+| Contract testing examples | `apps/frontend/src/data/contractSnippets.ts` |
+| Performance testing examples | `apps/frontend/src/data/k6Snippets.ts` |
+| Security testing examples | `apps/frontend/src/data/securitySnippets.ts` |
 
 These sources contain educational examples, not application requirements or
 proof of implemented test coverage. Inspect actual code and tests to establish
