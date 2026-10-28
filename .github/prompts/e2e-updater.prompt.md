@@ -29,4 +29,3 @@ At completion, summarize:
 - Files changed
 - Commands run and their results
 - Any unverified behavior, skipped checks, or remaining coverage gaps
-
