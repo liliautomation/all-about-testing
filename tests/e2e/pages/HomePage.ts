@@ -25,6 +25,10 @@ export class HomePage {
     await this.clickCard(/Test Types/i);
   }
 
+  async navigateToStrategyAdvisor() {
+    await this.clickCard(/Open strategy advisor/i);
+  }
+
   async navigateToTestStrategies() {
     await this.clickCard(/Test Strategies/i);
   }
