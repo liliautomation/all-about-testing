@@ -6,6 +6,9 @@
     "dev:frontend": "pnpm --dir frontend exec vite --open",
     "dev:backend": "pnpm --filter backend run dev",
     "dev": "concurrently \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+    "hooks:install": "git config core.hooksPath .githooks",
+    "security:pii": "python3 scripts/scan-pii.py origin/main",
+    "security:scan": "sh scripts/security-scan.sh",
     "test:e2e": "playwright test --config=e2e/playwright.config.ts",
     "test:e2e:ui": "playwright test --config=e2e/playwright.config.ts --ui"
   },
