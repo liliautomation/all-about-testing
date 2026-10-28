@@ -70,7 +70,21 @@ Open the Playwright UI runner:
 pnpm test:e2e:ui
 ```
 
-The Playwright config starts the backend and frontend automatically when needed.
+Without `PLAYWRIGHT_BASE_URL`, Playwright starts the backend and frontend locally.
+To test a deployed site instead, substitute its URL below:
+
+```bash
+PLAYWRIGHT_BASE_URL=https://example.com/all-about-testing/ pnpm test:e2e
+```
+
+When `PLAYWRIGHT_BASE_URL` is set, no local servers are started. Keep navigation
+path-relative so the `/all-about-testing/` project path is preserved.
+
+On pull requests, CI builds both applications. On matching pushes to `main`, the
+Pages workflow builds and deploys the frontend, then runs E2E against the URL
+returned by the deployment. Frontend, E2E, and root dependency changes trigger
+this workflow; it can also be run manually. An E2E failure marks the workflow
+failed and uploads diagnostics; the frontend has already been deployed.
 
 ## E2E Structure
 
