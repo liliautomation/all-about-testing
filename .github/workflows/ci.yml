@@ -37,5 +37,8 @@ jobs:
       - name: Build backend
         run: pnpm --dir apps/backend build
 
+      - name: Run frontend unit tests
+        run: pnpm --dir apps/frontend test
+
       - name: Build frontend
         run: pnpm --dir apps/frontend build
