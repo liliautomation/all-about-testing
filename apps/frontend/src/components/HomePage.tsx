@@ -1,131 +1,37 @@
 import React from "react";
+import type { View } from "../App";
+import { topics } from "../data/topics";
+import { TopicList } from "./TopicsPage";
+interface HomePageProps { onNavigate: (view: View) => void; }
 
-interface HomePageProps {
-  onNavigate: (view: "test-types" | "test-strategy" | "dev-roadmap" | "automation-decision" | "test-data-management") => void;
-}
-
-const categories = [
-  {
-    id: "test-types" as const,
-    emoji: "🧩",
-    title: "Test Types",
-    subtitle: "11 testing types",
-    description:
-      "Unit, Integration, E2E, Component, API, Performance, Security, Accessibility, Visual Regression, Contract",
-    accent: "#1a56db",
-    bg: "#e8f0fe",
-  },
-  {
-    id: "test-strategy" as const,
-    emoji: "🗺️",
-    title: "Test Strategies",
-    subtitle: "8 testing strategies",
-    description:
-      "TDD, BDD, ATDD, Test Pyramid, Shift-Left, Continuous Testing, Risk-Based, Exploratory Testing",
-    accent: "#7e3af2",
-    bg: "#f3effe",
-  },
-  {
-    id: "dev-roadmap" as const,
-    emoji: "🛣️",
-    title: "Dev Testing Roadmap",
-    subtitle: "5 phases",
-    description:
-      "A progressive path from unit tests to CI/CD, covering integration, E2E, non-functional, and advanced practices",
-    accent: "#0e9f6e",
-    bg: "#e6f9f0",
-  },
-  {
-    id: "automation-decision" as const,
-    emoji: "🤖",
-    title: "Automation Decision",
-    subtitle: "What to automate",
-    description:
-      "Decide what to automate immediately, what to automate later, and what should remain manual — driven by ROI, stability, and risk",
-    accent: "#d03027",
-    bg: "#fdecea",
-  },
-  {
-    id: "test-data-management" as const,
-    emoji: "🗄️",
-    title: "Test Data Management",
-    subtitle: "4 areas",
-    description:
-      "PII & data privacy, security testing considerations, confidentiality controls, and entity relationship modelling",
-    accent: "#0694a2",
-    bg: "#e0f5f5",
-  },
-];
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => (
-  <div className="fade-in-up">
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-        gap: "1.5rem",
-        marginTop: "0.5rem",
-      }}
-    >
-      {categories.map((cat) => (
-        <button
-          key={cat.id}
-          onClick={() => onNavigate(cat.id)}
-          style={{
-            textAlign: "left",
-            background: "#fff",
-            border: `2px solid ${cat.accent}`,
-            borderRadius: "12px",
-            padding: "1.75rem",
-            cursor: "pointer",
-            transition: "box-shadow 0.15s, transform 0.15s",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 24px ${cat.accent}33`;
-            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-          }}
-        >
-          <div style={{ fontSize: "2.8rem", marginBottom: "0.75rem", lineHeight: 1 }}>
-            {cat.emoji}
-          </div>
-          <div
-            style={{
-              display: "inline-block",
-              background: cat.bg,
-              color: cat.accent,
-              borderRadius: "6px",
-              padding: "0.2rem 0.6rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              marginBottom: "0.75rem",
-            }}
-          >
-            {cat.subtitle}
-          </div>
-          <h2 style={{ margin: "0 0 0.5rem", color: cat.accent, fontSize: "1.4rem" }}>
-            {cat.title}
-          </h2>
-          <p style={{ margin: 0, color: "#555", fontSize: "0.9rem", lineHeight: 1.5 }}>
-            {cat.description}
-          </p>
-          <div
-            style={{
-              marginTop: "1.25rem",
-              color: cat.accent,
-              fontWeight: 600,
-              fontSize: "0.9rem",
-            }}
-          >
-            Explore →
-          </div>
-        </button>
-      ))}
-    </div>
+  <div className="playground fade-in-up">
+    <section className="playground-hero" aria-labelledby="hero-title">
+      <div className="hero-copy">
+        <div className="hero-kicker"><span /> YOUR TESTING PLAYGROUND</div>
+        <h1 id="hero-title">Break things.<br />Build <span>confidence.<svg viewBox="0 0 420 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 Q180 -2 414 8 M25 17 Q230 4 395 14" /></svg></span></h1>
+        <p>A practical little corner of the internet for better software testing. Explore the concepts, try the tools, and find your next “aha!”</p>
+        <div className="hero-actions"><button className="primary-action" onClick={() => document.getElementById("explore")?.scrollIntoView({ behavior: "smooth" })}>Find your starting point <span>↓</span></button><span className="hero-note">Curiosity encouraged.<br />Bugs welcome.</span></div>
+      </div>
+      <div className="lab-art" role="img" aria-label="A playful testing lab with a green flask, passing checks and a curious bug">
+        <span className="art-label">EXPERIMENT No. 001</span><span className="art-spark spark-one">✳</span><span className="art-spark spark-two">+</span>
+        <div className="test-slip"><span>● ● ●</span><code>describe('a better release')<br /><em>✓</em> a little more coverage<br /><em>✓</em> a lot less guessing<br /><em>✓</em> ready for the unexpected</code><strong>3 passed <span>feels good, right?</span></strong></div>
+        <svg className="flask" viewBox="0 0 200 235" aria-hidden="true"><defs><clipPath id="flask-clip"><path d="M76 24H124V94L177 184Q190 211 160 214H40Q10 211 23 184L76 94Z" /></clipPath></defs><path d="M76 24H124V94L177 184Q190 211 160 214H40Q10 211 23 184L76 94Z" fill="#faf9f1" stroke="#242724" strokeWidth="5" strokeLinejoin="round"/><g clipPath="url(#flask-clip)"><path d="M0 147Q50 127 100 145T200 142V235H0Z" fill="#c8f36b"/><circle cx="76" cy="168" r="9" fill="#a6ce45"/><circle cx="128" cy="190" r="5" fill="#a6ce45"/><circle cx="109" cy="156" r="4" fill="#a6ce45"/></g><path d="M70 24H130M91 48V101L57 157" fill="none" stroke="#242724" strokeWidth="5" strokeLinecap="round"/><circle cx="88" cy="185" r="3"/><circle cx="113" cy="185" r="3"/><path d="M95 195Q101 201 108 195" fill="none" stroke="#242724" strokeWidth="3" strokeLinecap="round"/></svg>
+        <span className="bubble bubble-one"/><span className="bubble bubble-two"/><span className="art-sticker">a healthy dose<br />of <b>“what if?”</b></span><span className="little-bug" aria-hidden="true">✳</span><span className="bug-note">a feature? a bug?<br />let’s find out. ↗</span>
+      </div>
+    </section>
+    <div className="manifesto-strip"><span>LESS GUESSWORK</span><b aria-hidden="true">🤖</b><span>MORE “AHA!” MOMENTS</span><b aria-hidden="true">🤖</b><span>BETTER SOFTWARE</span><b aria-hidden="true">🤖</b><span>ONE TEST AT A TIME</span></div>
+    <section id="explore" className="explore-section" aria-labelledby="explore-title">
+      <div className="explore-heading"><div><span className="eyebrow">PICK A THREAD. FOLLOW YOUR CURIOSITY.</span><h2 id="explore-title">What are we exploring?</h2></div><span className="section-aside">A few good places to start ↙</span></div>
+      <div className="playground-grid">
+        <article className="lab-feature"><div className="feature-top"><span className="feature-tag">THE STRATEGY LAB</span><span aria-hidden="true">↗</span></div><div className="feature-orbit" aria-hidden="true">✳</div><div><h3>Your project.<br />Your game plan.</h3><p>A new app? A tricky release? Tell us what you’re building and get a testing strategy that fits.</p><button onClick={() => onNavigate("strategy-advisor")}>Open strategy advisor <span>↗</span></button><small>Practical guidance. No account needed.</small></div></article>
+        <div className="home-topic-column">
+          <TopicList topics={topics.slice(0, 5)} onNavigate={onNavigate} />
+          {topics.length > 5 && <button className="more-topics" onClick={() => onNavigate("topics")}>More… <span aria-hidden="true">↗</span></button>}
+        </div>
+      </div>
+    </section>
+    <section className="closing-note"><span aria-hidden="true">✺</span><div><h2>You don’t need to test everything at once.</h2><p>Start with one thing. Make it a little more reliable. Keep going.</p></div><a href="#dev-roadmap">Take the first step ↗</a></section>
   </div>
 );

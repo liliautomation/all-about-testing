@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/HomePage";
+import { StrategyAdvisorPage } from "../pages/StrategyAdvisorPage";
 import { TestTypesPage } from "../pages/TestTypesPage";
 import { TestStrategiesPage } from "../pages/TestStrategiesPage";
 import { RoadmapPage } from "../pages/RoadmapPage";
@@ -17,6 +18,16 @@ test.describe("Navigation buttons", () => {
   }) => {
     const home = new HomePage(page);
     await home.goto();
+
+    await home.expectCardVisible(/Open strategy advisor/i);
+    await home.navigateToStrategyAdvisor();
+    await expect(page.getByRole("heading", { name: /Test Strategy Advisor/i })).toBeVisible();
+    await new StrategyAdvisorPage(page).chooseProfile();
+    await page.getByLabel(/Project name/i).fill("Billing portal");
+    await page.getByLabel(/Security & privacy/i).check();
+    await page.getByRole("button", { name: /Build my test strategy/i }).click();
+    await expect(page.getByRole("heading", { name: /Billing portal should use a risk-led test pyramid/i })).toBeVisible();
+    await page.getByRole("button", { name: /← Back/i }).click();
 
     // ── Test Types ───────────────────────────────────────────────────────────
     await home.expectCardVisible(/Test Types/i);
@@ -95,4 +106,3 @@ test.describe("Link checker – no 404s", () => {
     );
   });
 });
-

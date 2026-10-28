@@ -38,6 +38,7 @@ __pycache__/
 # Playwright
 playwright-report/
 test-results/
+.playwright-mcp/
 
 # Cypress
 cypress/videos/
