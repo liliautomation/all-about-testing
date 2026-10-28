@@ -32,6 +32,8 @@ coverage/
 .cache/
 .next/
 .expo/
+__pycache__/
+*.pyc
 
 # Playwright
 playwright-report/
