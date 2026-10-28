@@ -15,7 +15,7 @@ importers:
         specifier: ^8.2.0
         version: 8.2.2
 
-  backend:
+  apps/backend:
     dependencies:
       cors:
         specifier: ^2.8.5
@@ -43,7 +43,7 @@ importers:
         specifier: ^5.2.2
         version: 5.8.3
 
-  frontend:
+  apps/frontend:
     dependencies:
       react:
         specifier: ^19.1.0

@@ -1,4 +1,4 @@
-// frontend/src/App.tsx
+// apps/frontend/src/App.tsx
 import React, { useState } from "react";
 import { HomePage } from "./components/HomePage";
 import { ChecklistForm } from "./components/ChecklistForm";

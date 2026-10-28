@@ -35,7 +35,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build backend
-        run: pnpm --dir backend build
+        run: pnpm --dir apps/backend build
 
       - name: Build frontend
-        run: pnpm --dir frontend build
+        run: pnpm --dir apps/frontend build

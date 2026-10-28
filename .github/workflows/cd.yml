@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'frontend/**'
-      - 'e2e/**'
+      - 'apps/frontend/**'
+      - 'tests/e2e/**'
       - 'package.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
@@ -39,7 +39,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build (GITHUB_PAGES base path)
-        working-directory: frontend
+        working-directory: apps/frontend
         env:
           GITHUB_PAGES: 'true'
         run: pnpm build
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
-          path: frontend/dist
+          path: apps/frontend/dist
 
   deploy:
     needs: build

@@ -1,5 +1,5 @@
 ---
-applyTo: "e2e/**/*.ts"
+applyTo: "tests/e2e/**/*.ts"
 ---
 
 # Playwright Instructions
@@ -7,7 +7,7 @@ applyTo: "e2e/**/*.ts"
 Also follow the [shared testing instructions](e2e.instructions.md).
 
 Follow these rules when creating or modifying Playwright tests, page objects,
-helpers, fixtures, or configuration in `e2e/`.
+helpers, fixtures, or configuration in `tests/e2e/`.
 
 ## Test Design
 
@@ -56,14 +56,14 @@ helpers, fixtures, or configuration in `e2e/`.
 
 ## Page Objects and Helpers
 
-- Keep selectors and reusable page behavior in `e2e/pages/`. Keep assertions in
+- Keep selectors and reusable page behavior in `tests/e2e/pages/`. Keep assertions in
   tests unless an assertion represents a stable, reusable page contract.
 - Page objects should receive Playwright's `Page` or a scoped `Locator` through
   their constructor. Expose intent-based methods such as `submitForm`, not raw
   selector details.
 - Keep page objects small and composable. Do not create a page object for a
   one-off interaction or turn page objects into test frameworks.
-- Put cross-page utilities in `e2e/helpers/`. Prefer Playwright fixtures when
+- Put cross-page utilities in `tests/e2e/helpers/`. Prefer Playwright fixtures when
   reusable setup or teardown requires lifecycle management.
 - Do not share mutable page objects, browser contexts, pages, or test data
   between tests.
@@ -85,8 +85,8 @@ helpers, fixtures, or configuration in `e2e/`.
 
 ## Project Conventions
 
-- Place specs in `e2e/tests/` with the `*.spec.ts` suffix.
-- Reuse existing page objects in `e2e/pages/` and helpers in `e2e/helpers/`
+- Place specs in `tests/e2e/tests/` with the `*.spec.ts` suffix.
+- Reuse existing page objects in `tests/e2e/pages/` and helpers in `tests/e2e/helpers/`
   before introducing new abstractions.
 - Use the configured `baseURL`; navigate with `./` or other path-relative URLs
   so the deployed GitHub Pages project path is preserved. Avoid leading `/`
@@ -100,7 +100,7 @@ helpers, fixtures, or configuration in `e2e/`.
   its output URL. Pull request CI builds the applications without running E2E.
 - Run all end-to-end tests from the repository root with `pnpm test:e2e`.
 - During development, run a focused spec with
-  `pnpm exec playwright test e2e/tests/<name>.spec.ts --config=e2e/playwright.config.ts`.
+  `pnpm exec playwright test tests/e2e/tests/<name>.spec.ts --config=tests/e2e/playwright.config.ts`.
 - Use `pnpm test:e2e:ui` for interactive debugging. Prefer traces and the
   Playwright report over adding debug sleeps or permanent logging.
 

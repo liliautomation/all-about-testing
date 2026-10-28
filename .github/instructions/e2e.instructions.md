@@ -1,11 +1,11 @@
 ---
-applyTo: "e2e/**/*.ts,**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx,**/*.spec.js,**/*.spec.jsx,**/*.spec.ts,**/*.spec.tsx,**/test/**,**/tests/**,**/*test*.config.js,**/*test*.config.cjs,**/*test*.config.mjs,**/*test*.config.ts"
+applyTo: "tests/e2e/**/*.ts,**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx,**/*.spec.js,**/*.spec.jsx,**/*.spec.ts,**/*.spec.tsx,**/test/**,**/tests/**,**/*test*.config.js,**/*test*.config.cjs,**/*test*.config.mjs,**/*test*.config.ts"
 ---
 
 # Testing Instructions
 
 Use these shared standards for all test code and test configuration. For files
-under `e2e/`, also follow `playwright.instructions.md`; its Playwright-specific
+under `tests/e2e/`, also follow `playwright.instructions.md`; its Playwright-specific
 rules take precedence when guidance overlaps.
 
 ## Scope and Value
